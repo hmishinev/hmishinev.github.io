@@ -1,0 +1,559 @@
+/* CSS Variables */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #1e293b;
+    --text-color: #334155;
+    --text-light: #64748b;
+    --background: #ffffff;
+    --background-alt: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #22c55e;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--background);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-alt);
+    border-color: var(--text-light);
+}
+
+.btn-link {
+    background: none;
+    color: var(--primary-color);
+    padding: 12px 16px;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+}
+
+/* Header & Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.logo:hover {
+    color: var(--primary-color);
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+}
+
+.nav-link {
+    display: block;
+    padding: 8px 16px;
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: var(--radius);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    background-color: var(--background-alt);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+/* Hero Section */
+.hero {
+    padding: 160px 0 100px;
+    background: linear-gradient(135deg, var(--background-alt) 0%, var(--white) 100%);
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* Section Styles */
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-light);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 48px;
+}
+
+/* Services Section */
+.services {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.service-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+}
+
+.service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: var(--background-alt);
+    border-radius: 50%;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+.service-card h3 {
+    font-size: 1.375rem;
+    color: var(--secondary-color);
+    margin-bottom: 16px;
+}
+
+.service-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* About Section */
+.about {
+    padding: 100px 0;
+    background-color: var(--background-alt);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.125rem;
+    color: var(--text-color);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contact Section */
+.contact {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background-color: var(--background-alt);
+    border-radius: var(--radius);
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+}
+
+.contact-item h4 {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.contact-item a,
+.contact-item address {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    color: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+    padding: 40px 0;
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links {
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-links .separator {
+    margin: 0 12px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-notice {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    padding: 24px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.cookie-banner.show {
+    transform: translateY(0);
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cookie-content h3 {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+}
+
+.cookie-content p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cookie-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Legal Pages */
+.legal-page {
+    padding: 120px 0 80px;
+    min-height: calc(100vh - 200px);
+}
+
+.legal-page h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+
+.last-updated {
+    color: var(--text-light);
+    margin-bottom: 48px;
+    font-size: 0.9375rem;
+}
+
+.legal-section {
+    margin-bottom: 40px;
+}
+
+.legal-section h2 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.legal-section:first-of-type h2 {
+    border-top: none;
+    padding-top: 0;
+}
+
+.legal-section h3 {
+    font-size: 1.125rem;
+    color: var(--secondary-color);
+    margin: 24px 0 12px;
+}
+
+.legal-section p {
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+.legal-section ul {
+    margin: 16px 0 16px 24px;
+    color: var(--text-color);
+}
+
+.legal-section li {
+    margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 16px 24px;
+        box-shadow: var(--shadow);
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 12px 16px;
+    }
+
+    .hero {
+        padding: 120px 0 60px;
+    }
+
+    .services,
+    .about,
+    .contact {
+        padding: 60px 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .cookie-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cookie-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .service-card {
+        padding: 32px 24px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
