@@ -1,8 +1,15 @@
-/* CSS Variables */
+/* CSS Variables - Based on logo colors */
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
+    --primary-color: #4B5BAD;
+    --primary-dark: #3A4A9C;
+    --primary-light: #6B7BC5;
     --secondary-color: #1e293b;
+    --accent-1: #5C6CB8;
+    --accent-2: #7B8AD0;
+    --accent-3: #3D4D9F;
+    --gradient-1: linear-gradient(135deg, #4B5BAD 0%, #6B7BC5 100%);
+    --gradient-2: linear-gradient(135deg, #3A4A9C 0%, #5C6CB8 100%);
+    --gradient-3: linear-gradient(135deg, #5C6CB8 0%, #7B8AD0 100%);
     --text-color: #334155;
     --text-light: #64748b;
     --background: #ffffff;
@@ -12,6 +19,7 @@
     --white: #ffffff;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-colored: 0 10px 40px -10px rgba(75, 91, 173, 0.3);
     --radius: 8px;
     --transition: all 0.3s ease;
 }
@@ -75,12 +83,14 @@ address {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background: var(--gradient-1);
     color: var(--white);
+    box-shadow: 0 4px 15px rgba(75, 91, 173, 0.4);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(75, 91, 173, 0.5);
     color: var(--white);
 }
 
@@ -186,16 +196,45 @@ address {
 /* Hero Section */
 .hero {
     padding: 160px 0 100px;
-    background: linear-gradient(135deg, var(--background-alt) 0%, var(--white) 100%);
+    background: linear-gradient(135deg, #f5f7fc 0%, #e8ecf8 50%, #f0f3fa 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(75, 91, 173, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(107, 123, 197, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
 }
 
 .hero-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
-    color: var(--secondary-color);
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 24px;
     line-height: 1.2;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-subtitle {
@@ -203,6 +242,13 @@ address {
     color: var(--text-light);
     max-width: 700px;
     margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .btn {
+    position: relative;
+    z-index: 1;
 }
 
 /* Section Styles */
@@ -212,6 +258,19 @@ address {
     color: var(--secondary-color);
     text-align: center;
     margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-1);
+    margin: 16px auto 0;
+    border-radius: 2px;
 }
 
 .section-subtitle {
@@ -237,16 +296,62 @@ address {
 .service-card {
     background-color: var(--white);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 40px 32px;
     text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    opacity: 0;
     transition: var(--transition);
 }
 
 .service-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-    border-color: var(--primary-color);
+    box-shadow: var(--shadow-colored);
+    transform: translateY(-8px);
+    border-color: transparent;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+/* Different shades of logo color for each service card */
+.service-card:nth-child(1) .service-icon {
+    background: linear-gradient(135deg, rgba(75, 91, 173, 0.12) 0%, rgba(107, 123, 197, 0.12) 100%);
+    color: #4B5BAD;
+}
+
+.service-card:nth-child(1)::before {
+    background: var(--gradient-1);
+}
+
+.service-card:nth-child(2) .service-icon {
+    background: linear-gradient(135deg, rgba(58, 74, 156, 0.12) 0%, rgba(92, 108, 184, 0.12) 100%);
+    color: #3A4A9C;
+}
+
+.service-card:nth-child(2)::before {
+    background: var(--gradient-2);
+}
+
+.service-card:nth-child(3) .service-icon {
+    background: linear-gradient(135deg, rgba(92, 108, 184, 0.12) 0%, rgba(123, 138, 208, 0.12) 100%);
+    color: #5C6CB8;
+}
+
+.service-card:nth-child(3)::before {
+    background: var(--gradient-3);
 }
 
 .service-icon {
@@ -255,10 +360,8 @@ address {
     justify-content: center;
     width: 80px;
     height: 80px;
-    background-color: var(--background-alt);
     border-radius: 50%;
     margin-bottom: 24px;
-    color: var(--primary-color);
 }
 
 .service-card h3 {
@@ -275,7 +378,8 @@ address {
 /* About Section */
 .about {
     padding: 100px 0;
-    background-color: var(--background-alt);
+    background: linear-gradient(180deg, #f8fafc 0%, #f0f3fa 100%);
+    position: relative;
 }
 
 .about-content {
@@ -314,8 +418,16 @@ address {
     align-items: flex-start;
     gap: 16px;
     padding: 24px;
-    background-color: var(--background-alt);
-    border-radius: var(--radius);
+    background-color: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
 }
 
 .contact-icon {
@@ -325,9 +437,25 @@ address {
     width: 48px;
     height: 48px;
     min-width: 48px;
-    background-color: var(--primary-color);
+    background: var(--gradient-1);
     color: var(--white);
     border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(75, 91, 173, 0.3);
+}
+
+.contact-item:nth-child(1) .contact-icon {
+    background: var(--gradient-1);
+    box-shadow: 0 4px 15px rgba(75, 91, 173, 0.3);
+}
+
+.contact-item:nth-child(2) .contact-icon {
+    background: var(--gradient-2);
+    box-shadow: 0 4px 15px rgba(58, 74, 156, 0.3);
+}
+
+.contact-item:nth-child(3) .contact-icon {
+    background: var(--gradient-3);
+    box-shadow: 0 4px 15px rgba(92, 108, 184, 0.3);
 }
 
 .contact-item h4 {
@@ -351,7 +479,7 @@ address {
 /* Footer */
 .footer {
     padding: 40px 0;
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     color: var(--white);
 }
 
